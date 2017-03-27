@@ -208,6 +208,7 @@
     <Content Include="img\icons\weather-icons.png" />
     <Content Include="img\icons\weather-main.png" />
     <Content Include="img\loader.gif" />
+    <Content Include="img\logo.jpg" />
     <Content Include="img\spinner.gif" />
     <Content Include="img\team\1.png" />
     <Content Include="img\team\2.png" />
