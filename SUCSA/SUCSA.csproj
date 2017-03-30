@@ -181,9 +181,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animate.css" />
+    <Content Include="Content\bar\arrows.png" />
+    <Content Include="Content\bar\bar.css" />
+    <Content Include="Content\bar\bullets.png" />
+    <Content Include="Content\bar\loading.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\dark\arrows.png" />
+    <Content Include="Content\dark\bullets.png" />
+    <Content Include="Content\dark\dark.css" />
+    <Content Include="Content\dark\loading.gif" />
     <Content Include="Content\default.css" />
+    <Content Include="Content\default\arrows.png" />
+    <Content Include="Content\default\bullets.png" />
+    <Content Include="Content\default\default.css" />
+    <Content Include="Content\default\loading.gif" />
+    <Content Include="Content\light\arrows.png" />
+    <Content Include="Content\light\bullets.png" />
+    <Content Include="Content\light\light.css" />
+    <Content Include="Content\light\loading.gif" />
+    <Content Include="Content\nivo-slider.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="font-awesome\css\font-awesome.css" />
@@ -192,6 +209,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\Activities\1.jpg" />
+    <Content Include="img\Activities\2.jpg" />
+    <Content Include="img\Activities\3.JPG" />
+    <Content Include="img\Activities\4.jpg" />
     <Content Include="img\bg1.jpg" />
     <Content Include="img\bg22.jpg" />
     <Content Include="img\icons\button-icons.png" />
@@ -252,6 +273,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.easing.min.js" />
     <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.nivo.slider.js" />
     <Content Include="Scripts\jquery.scrollTo.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
