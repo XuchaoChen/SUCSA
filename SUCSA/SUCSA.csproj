@@ -180,6 +180,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SUCSADB.mdf" />
+    <Content Include="App_Data\SUCSADB_log.ldf">
+      <DependentUpon>SUCSADB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\animate.css" />
     <Content Include="Content\bar\arrows.png" />
     <Content Include="Content\bar\bar.css" />
@@ -210,9 +214,25 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="img\Activities\1.jpg" />
+    <Content Include="img\Activities\10.jpg" />
+    <Content Include="img\Activities\11.jpg" />
+    <Content Include="img\Activities\12.jpg" />
+    <Content Include="img\Activities\13.jpg" />
+    <Content Include="img\Activities\14.jpg" />
+    <Content Include="img\Activities\15.jpg" />
+    <Content Include="img\Activities\16.jpg" />
+    <Content Include="img\Activities\17.jpg" />
+    <Content Include="img\Activities\18.jpg" />
+    <Content Include="img\Activities\19.jpg" />
     <Content Include="img\Activities\2.jpg" />
-    <Content Include="img\Activities\3.JPG" />
+    <Content Include="img\Activities\20.jpg" />
+    <Content Include="img\Activities\3.jpg" />
     <Content Include="img\Activities\4.jpg" />
+    <Content Include="img\Activities\5.jpg" />
+    <Content Include="img\Activities\6.jpg" />
+    <Content Include="img\Activities\7.jpg" />
+    <Content Include="img\Activities\8.jpg" />
+    <Content Include="img\Activities\9.jpg" />
     <Content Include="img\bg1.jpg" />
     <Content Include="img\bg22.jpg" />
     <Content Include="img\icons\button-icons.png" />
@@ -320,9 +340,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -330,6 +348,12 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SUCSA.DATA\SUCSA.DATA.csproj">
+      <Project>{5f3eca81-5628-4609-9ff4-01249db6bfe6}</Project>
+      <Name>SUCSA.DATA</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

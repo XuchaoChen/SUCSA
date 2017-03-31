@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUCSA", "SUCSA\SUCSA.csproj", "{4730005E-342E-4A7B-A01E-675A32839205}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUCSA.DATA", "SUCSA.DATA\SUCSA.DATA.csproj", "{5F3ECA81-5628-4609-9FF4-01249DB6BFE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4730005E-342E-4A7B-A01E-675A32839205}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4730005E-342E-4A7B-A01E-675A32839205}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4730005E-342E-4A7B-A01E-675A32839205}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F3ECA81-5628-4609-9FF4-01249DB6BFE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F3ECA81-5628-4609-9FF4-01249DB6BFE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F3ECA81-5628-4609-9FF4-01249DB6BFE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F3ECA81-5628-4609-9FF4-01249DB6BFE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
