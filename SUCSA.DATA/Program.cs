@@ -10,7 +10,7 @@ namespace SUCSA.DATA
     {
         static void Main(string[] args)
         {
-            using(var ctx=new SUCSAContext())
+           using (var ctx=new SUCSAContext())
             {
                 var admins = new List<Admin>
                 {
