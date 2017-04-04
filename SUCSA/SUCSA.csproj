@@ -348,7 +348,9 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -361,6 +363,10 @@
     <ProjectReference Include="..\SUCSA.DATA\SUCSA.DATA.csproj">
       <Project>{5f3eca81-5628-4609-9ff4-01249db6bfe6}</Project>
       <Name>SUCSA.DATA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SUCSA.SERVICE\SUCSA.SERVICE.csproj">
+      <Project>{a1d23189-04b7-4ffc-916b-98047e1bc01e}</Project>
+      <Name>SUCSA.SERVICE</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
