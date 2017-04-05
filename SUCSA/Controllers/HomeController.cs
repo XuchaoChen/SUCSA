@@ -1,4 +1,7 @@
-﻿using System;
+﻿using SUCSA.DATA;
+using SUCSA.SERVICE;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +13,12 @@ namespace SUCSA.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            IList<Activity> activities = new List<Activity>();
+            using(var service=new ActivitiesService())
+            {
+                activities = (IList<Activity>)service.GetAllTopActivities();
+            }
+            return View(activities);
         }
 
         public ActionResult About()
