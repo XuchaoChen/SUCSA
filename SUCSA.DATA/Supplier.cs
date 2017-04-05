@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -17,10 +18,14 @@ namespace SUCSA.DATA
         [Required]
         public string SupplierName { get; set; }
 
+        [Required]
+        [DefaultValue("")]
         public string Description { get; set; }
 
+        [Required]
         public byte[] Picture { get; set; }
 
+        [Required]
         public bool IsTop { get; set; }
     }
 }

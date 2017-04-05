@@ -272,9 +272,10 @@ hr {
 
 .section-heading h2 {
 	font-size: 40px;
+    margin-top:-50px;
 }
 .section-heading i {
-	margin-bottom: 20px;
+	margin-bottom: -10px;
 }
 
 
@@ -1029,7 +1030,7 @@ a:hover, a:active {
 
 .slider-wrapper { 
 	width: 80%; 
-	margin: 100px auto;
+	margin: 100px auto 0 auto;
 }
 
 /*====================*/

@@ -1,4 +1,103 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@using SUCSA.DATA
+<section id="service" class="home-section text-center bg-gray">
+    <div class="heading-about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="wow bounceInDown" data-wow-delay="0.4s">
+                        <div class="section-heading">
+                            <h2>近期活动</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div id="wrapper">
+            <div class="slider-wrapper theme-default">
+                <div id="slider" class="nivoSlider">
+                    @foreach(var item in Model)
+                    {
+                        var base64 = Convert.ToBase64String(item.Picture);
+                        var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                        <img src=@imgSrc alt="" title=@item.Description/>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Section: services -->
+<!-- Section: contact -->
+<section id="contact" class="home-section text-center">
+    <div class="heading-contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="wow bounceInDown" data-wow-delay="0.4s">
+                        <div class="section-heading">
+                            <h2>赞助合作伙伴</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="contact-us">
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="boxed-grey">
+                </div>
+            </div>
 
+            <div class="col-lg-2" id="contact-us" >
+                <div class="widget-contact">
+                    <h5>联系我们</h5>
+
+                    <address>
+                        <strong>xxxxxxx</strong><br>
+                        xxxxxxx<br>
+                        xxxxxxx<br>
+                        <abbr title="Phone">Ph:</abbr> (123) 456-7890
+                    </address>
+
+                    <address>
+                        <strong>Email</strong><br>
+                        <a href="mailto:#">email.gmail@example.com</a>
+                    </address>
+                    <address>
+                        <strong>xxxxxxxxxxxxx</strong><br>
+                        <ul class="company-social">
+                            <li class="social-facebook"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li class="social-twitter"><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            <li class="social-dribble"><a href="#" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+                            <li class="social-google"><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </address>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="wow shake" data-wow-delay="0.4s">
+                    <div class="page-scroll marginbot-30">
+                        <a href="#intro" id="totop" class="btn btn-circle">
+                            <i class="fa fa-angle-double-up animated"></i>
+                        </a>
+                    </div>
+                </div>
+                <p>&copy;Copyright 2017- Xuchao Chen and Hui Yang. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
