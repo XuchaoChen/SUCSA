@@ -16,6 +16,7 @@ namespace SUCSA.Controllers
             ICollection<Activity> activities;
             using (var service = new ActivitiesService()){
                 activities = service.GetAllActivities();
+                //activities = service.GetAllTopActivities();
             }
             return View(activities);
         }
@@ -25,6 +26,17 @@ namespace SUCSA.Controllers
             using(var service = new ActivitiesService()){
                 var activity = service.GetActivityById(id);
                 activity.IsTop = !activity.IsTop;
+                service.updateActivity(activity);
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult update(int id, string name, string des)
+        {
+            using(var service =  new ActivitiesService()){
+                var activity = service.GetActivityById(id);
+                activity.PictureName = name;
+                activity.Description = des;
                 service.updateActivity(activity);
             }
             return RedirectToAction("Index");
