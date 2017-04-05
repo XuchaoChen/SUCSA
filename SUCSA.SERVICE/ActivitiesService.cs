@@ -71,6 +71,9 @@ namespace SUCSA.SERVICE
             return true;
         }
 
-
+        public List<string> getAllCategory()
+        {
+            return context.Activities.Select(x => x.Category).Distinct().ToList();
+        }
     }
 }
