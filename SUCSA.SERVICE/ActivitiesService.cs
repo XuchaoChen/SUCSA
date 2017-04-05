@@ -26,6 +26,20 @@ namespace SUCSA.SERVICE
             return context.Activities.Find(id);
         }
 
+        public bool updateActivity(Activity activity)
+        {
+            var result = context.Activities.Find(activity.PictureID);
+            if(result != null)
+            {
+                result.PictureName = activity.PictureName;
+                result.Description = activity.Description;
+                result.IsTop = activity.IsTop;
+                context.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
         public ICollection<Activity> GetAllTopActivities()
         {
             return context.Activities.Where(x => x.IsTop == true).ToList();
@@ -56,5 +70,7 @@ namespace SUCSA.SERVICE
             context.SaveChanges();
             return true;
         }
+
+
     }
 }

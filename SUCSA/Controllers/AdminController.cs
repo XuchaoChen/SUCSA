@@ -19,5 +19,15 @@ namespace SUCSA.Controllers
             }
             return View(activities);
         }
+
+        public ActionResult reverseTop(int id)
+        {
+            using(var service = new ActivitiesService()){
+                var activity = service.GetActivityById(id);
+                activity.IsTop = !activity.IsTop;
+                service.updateActivity(activity);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
