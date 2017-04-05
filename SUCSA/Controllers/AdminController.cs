@@ -41,5 +41,15 @@ namespace SUCSA.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public ActionResult delete(int id)
+        {
+            using (var service = new ActivitiesService())
+            {
+                var activity = service.GetActivityById(id);
+                service.RemoveActivity(activity);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

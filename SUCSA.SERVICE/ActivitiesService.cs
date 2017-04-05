@@ -58,6 +58,17 @@ namespace SUCSA.SERVICE
             return true;
         }
 
+
+        public bool RemoveActivity(Activity activity)
+        {
+            if (context.Activities.Remove(activity) == null)
+            {
+                return false;
+            }
+            context.SaveChanges();
+            return true;
+        }
+
         public bool RemoveActiviites(ICollection<Activity> activities)
         {
             foreach(Activity activity in activities)
