@@ -21,11 +21,11 @@ namespace SUCSA.DATA
                 {
 
                     
-                    new Activity(){Category="BasketBall",IsTop=true,PictureName="1",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(@"F:\C#\SUCSA\SUCSA\img\Activities\1.jpg")) },
-                    new Activity(){Category="BasketBall",IsTop=true,PictureName="2",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(@"F:\C#\SUCSA\SUCSA\img\Activities\2.jpg")) },
-                    new Activity(){Category="BasketBall",IsTop=true,PictureName="3",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(@"F:\C#\SUCSA\SUCSA\img\Activities\3.jpg")) },
-                    new Activity(){Category="BasketBall",IsTop=true,PictureName="4",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(@"F:\C#\SUCSA\SUCSA\img\Activities\4.jpg")) },
-                    new Activity(){Category="BasketBall",IsTop=true,PictureName="5",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(@"F:\C#\SUCSA\SUCSA\img\Activities\5.jpg")) },
+                    new Activity(){Category="BasketBall",IsTop=true,PictureName="1",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(@"C:\Users\Administrator\Source\Repos\SUCSA\SUCSA\img\Activities\1.jpg")) },
+                    new Activity(){Category="BasketBall",IsTop=true,PictureName="2",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(@"C:\Users\Administrator\Source\Repos\SUCSA\SUCSA\img\Activities\2.jpg")) },
+                    new Activity(){Category="BasketBall",IsTop=true,PictureName="3",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(@"C:\Users\Administrator\Source\Repos\SUCSA\SUCSA\img\Activities\3.jpg")) },
+                    new Activity(){Category="BasketBall",IsTop=true,PictureName="4",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(@"C:\Users\Administrator\Source\Repos\SUCSA\SUCSA\img\Activities\4.jpg")) },
+                    new Activity(){Category="BasketBall",IsTop=true,PictureName="5",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(@"C:\Users\Administrator\Source\Repos\SUCSA\SUCSA\img\Activities\5.jpg")) },
                 };
                 foreach(Activity a in activities)
                 {

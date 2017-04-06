@@ -21,6 +21,26 @@ namespace SUCSA.Controllers
             return View(activities);
         }
 
+
+        [HttpPost]
+        public ActionResult Create(string category, string name, string des, HttpPostedFileBase file)
+        {
+            using (var service = new ActivitiesService())
+            {
+                var activity = new Activity();
+                activity.Category = category;
+                activity.PictureName = name;
+                activity.Description = des;
+                
+                System.Drawing.Image sourceimage = System.Drawing.Image.FromStream(file.InputStream);
+                activity.Picture = SUCSA.DATA.ByteHelper.ImageToByteArray(sourceimage);
+
+                activity.IsTop = false;
+                service.AddActivity(activity);
+            }
+            return RedirectToAction("Index");
+        }
+
         public ActionResult reverseTop(int id)
         {
             using(var service = new ActivitiesService()){

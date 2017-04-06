@@ -45,6 +45,16 @@ namespace SUCSA.SERVICE
             return context.Activities.Where(x => x.IsTop == true).ToList();
         }
 
+        public bool AddActivity(Activity activity)
+        {
+            if (context.Activities.Add(activity) == null)
+            {
+                return false;
+            }
+            context.SaveChanges();
+            return true;
+        }
+
         public bool AddActivities(ICollection<Activity> activities)
         {
             foreach(Activity activity in activities)
