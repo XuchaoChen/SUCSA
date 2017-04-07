@@ -31,15 +31,13 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            var base64 = Convert.ToBase64String(item.Picture);
-                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
                             <tr>
                                 <td><input type="checkbox" class="checkthis" /></td>
                                 <td>@item.Category</td>
                                 <td>@item.PictureName</td>
                                 <td>@item.Description</td>
                                 <td>@item.IsTop</td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Top"><button data-id=@imgSrc class="btn btn-primary btn-xs display" data-title="Display" data-toggle="modal" data-target="#display"><span class="glyphicon glyphicon-zoom-in"></span></button></p></td>
+                                <td><p data-placement="top" data-toggle="tooltip" title="Top"><button data-id=@item.PictureID class="btn btn-primary btn-xs display" data-title="Display" data-toggle="modal" data-target="#display"><span class="glyphicon glyphicon-zoom-in"></span></button></p></td>
                                 @{
                                     if (item.IsTop == true)
                                     {
@@ -258,9 +256,24 @@
 <script src="~/Scripts/jquery.min.js"></script>
 <script>
     $(".display").on("click", function () {
-        var id = $(this).data('id');
-
-        $(".modal-body #image").attr("src", id);
+        /*var id = $(this).data('id');
+        $(".modal-body #image").attr("src", id);*/
+        $.ajax({
+            type: "POST",
+            url: "/Admin/GetPicture",
+            data: '{id: "' + $(this).data('id') + '"  }',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                $(".modal-body #image").attr("src", response);
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
     });
 
     $(".untop").on("click", function () {

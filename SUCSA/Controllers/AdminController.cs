@@ -18,6 +18,10 @@ namespace SUCSA.Controllers
                 activities = service.GetAllActivities();
                 //activities = service.GetAllTopActivities();
             }
+            foreach(Activity a in activities)
+            {
+                a.Picture = null;
+            }
             return View(activities);
         }
 
@@ -70,6 +74,19 @@ namespace SUCSA.Controllers
                 service.RemoveActivity(activity);
             }
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public JsonResult GetPicture(int id)
+        {
+            byte[] pic;
+            using (var service = new ActivitiesService())
+            {
+                pic = service.GetActivityById(id).Picture;
+            }
+            var base64 = Convert.ToBase64String(pic);
+            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+            return Json(imgSrc);
         }
     }
 }
