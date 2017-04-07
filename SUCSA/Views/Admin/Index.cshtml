@@ -308,5 +308,29 @@
         document.getElementById('newPicName').value = filename;
     });
 
-    
+    $(".checkthis").on("change", function () {
+        var check = $('input[type="checkbox"]:checked').length;
+        if (check != 0) {
+            $('.display').prop('disabled', true);
+            $('.untop').prop('disabled', true);
+            $('.top').prop('disabled', true);
+            $('.edit').prop('disabled', true);
+            $(".display").hide();
+            $(".untop").hide();
+            $(".top").hide();
+            $(".edit").hide();
+
+        }
+        else {
+            $('.display').prop('disabled', false);
+            $('.untop').prop('disabled', false);
+            $('.top').prop('disabled', false);
+            $('.edit').prop('disabled', false);
+            $('.display').prop('disabled', false);
+            $(".display").show();
+            $(".untop").show();
+            $(".top").show();
+            $(".edit").show();
+        }
+    });
 </script>
