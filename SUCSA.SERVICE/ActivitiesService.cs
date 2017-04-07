@@ -96,5 +96,15 @@ namespace SUCSA.SERVICE
         {
             return context.Activities.Select(x => x.Category).Distinct().ToList();
         }
+
+        public List<Activity> GetActivitiesInARange(int currentPage, int maxRows)
+        {
+            return context.Activities.OrderBy(x=>x.PictureID).Skip((currentPage - 1) * maxRows).Take(maxRows).ToList();
+        }
+
+        public int CountActivities()
+        {
+            return context.Activities.Count();
+        }
     }
 }

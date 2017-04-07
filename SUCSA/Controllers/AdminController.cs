@@ -13,7 +13,7 @@ namespace SUCSA.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            ICollection<Activity> activities;
+            /*ICollection<Activity> activities;
             using (var service = new ActivitiesService()){
                 activities = service.GetAllActivities();
                 //activities = service.GetAllTopActivities();
@@ -22,7 +22,14 @@ namespace SUCSA.Controllers
             {
                 a.Picture = null;
             }
-            return View(activities);
+            return View(activities);*/
+            return View(GetActivities(1));
+        }
+
+        [HttpPost]
+        public ActionResult Index(int currentPage)
+        {
+            return View(GetActivities(currentPage));
         }
 
 
@@ -87,6 +94,26 @@ namespace SUCSA.Controllers
             var base64 = Convert.ToBase64String(pic);
             var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
             return Json(imgSrc);
+        }
+
+        private SUCSA.Models.ActivityViewModels GetActivities(int currentPage)
+        {
+            //int maxRows = 10;
+            int maxRows = 3;
+            using (var service = new ActivitiesService())
+            {
+                SUCSA.Models.ActivityViewModels activityModels = new SUCSA.Models.ActivityViewModels();
+
+                activityModels.activities = service.GetActivitiesInARange(currentPage, maxRows);
+                    
+
+                double pageCount = (double)((decimal)service.CountActivities() / Convert.ToDecimal(maxRows));
+                activityModels.PageCount = (int)Math.Ceiling(pageCount);
+
+                activityModels.CurrentPageIndex = currentPage;
+
+                return activityModels;
+            }
         }
     }
 }
