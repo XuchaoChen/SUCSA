@@ -47,5 +47,39 @@ namespace SUCSA.SERVICE
             }
             return false;
         }
+
+        public List<Supplier> GetSupplierInARange(int currentPage, int maxRows)
+        {
+            return context.Suppliers.OrderBy(x=>x.SupplierID).Skip((currentPage - 1) * maxRows).Take(maxRows).ToList(); 
+        }
+
+        public int CountSuppliers()
+        {
+            return context.Suppliers.Count();
+        }
+
+        public bool updateSupplier(Supplier supplier)
+        {
+            var result = context.Suppliers.Find(supplier.SupplierID);
+            if (result != null)
+            {
+                result.SupplierName = supplier.SupplierName;
+                result.Description = supplier.Description;
+                result.IsTop = supplier.IsTop;
+                context.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public bool RemoveSupplier(Supplier supplier)
+        {
+            if (context.Suppliers.Remove(supplier) == null)
+            {
+                return false;
+            }
+            context.SaveChanges();
+            return true;
+        }
     }
 }

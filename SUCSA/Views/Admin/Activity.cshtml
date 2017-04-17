@@ -106,7 +106,7 @@
             </div>
 
         </div>
-        @using (Html.BeginForm("Index", "Admin", FormMethod.Post, new { id = "hiddenForm" }))
+        @using (Html.BeginForm("Activity", "Admin", FormMethod.Post, new { id = "hiddenForm" }))
         {
             <input type="hidden" id="hfCurrentPageIndex" name="currentPage" />
         }
@@ -144,7 +144,7 @@
                 <input type="hidden" value="" id="untopId" />
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("reverseTop", "Admin")?id=' + $('#untopId').val()"><span class="glyphicon glyphicon-ok-sign"></span> 是</button>
+                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("ReverseTopActivity", "Admin")?id=' + $('#untopId').val()"><span class="glyphicon glyphicon-ok-sign"></span> 是</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> 否</button>
             </div>
         </div>
@@ -164,7 +164,7 @@
                 <input type="hidden" value="" id="topId" />
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("reverseTop", "Admin")?id=' + $('#topId').val()"><span class="glyphicon glyphicon-ok-sign"></span> 是</button>
+                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("reverseTopActivity", "Admin")?id=' + $('#topId').val()"><span class="glyphicon glyphicon-ok-sign"></span> 是</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> 否</button>
             </div>
         </div>
@@ -208,7 +208,7 @@
                 </div>
             </div>
             <div class="modal-footer ">
-                <button type="button" onclick="location.href='@Url.Action("update", "Admin")?id=' + $('#editId').val() + '&name=' + $('#editPic').val() + '&des=' + $('#editDes').val()" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>  更新</button>
+                <button type="button" onclick="location.href='@Url.Action("UpdateActivity", "Admin")?id=' + $('#editId').val() + '&name=' + $('#editPic').val() + '&des=' + $('#editDes').val()" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>  更新</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -222,10 +222,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                <h4 class="modal-title custom_align" id="Heading">修改</h4>
+                <h4 class="modal-title custom_align" id="Heading">新建</h4>
             </div>
             <div class="modal-body">
-                <form action="/Admin/Create" method="post" enctype="multipart/form-data">
+                <form action="/Admin/CreateActivity" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>活动</label>
                         <select class="form-control" name="Category" id="Category">
@@ -282,7 +282,7 @@
 
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("delete", "Admin")?id= ' + $('#deleteId').val()"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("DeleteActivity", "Admin")?id= ' + $('#deleteId').val()"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
             </div>
         </div>
@@ -299,7 +299,7 @@
         $(".modal-body #image").attr("src", id);*/
         $.ajax({
             type: "POST",
-            url: "/Admin/GetPicture",
+            url: "/Admin/GetPictureActivity",
             data: '{id: "' + $(this).data('id') + '"  }',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -330,8 +330,6 @@
         $(".modal-body #editPic").val(pic);
         var des = $(this).data('des');
         $(".modal-body #editDes").val(des);
-        alert(id);
-        alert(pic);
     });
     $(".delete").on("click", function () {
         var id = $(this).data('id');
