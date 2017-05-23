@@ -17,5 +17,7 @@ namespace SUCSA.DATA
         public DbSet<Activity> Activities { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Admin> Admins { get; set; }
+
+        public DbSet<AcitivityCategory> Categories { get; set; }
     }
 }

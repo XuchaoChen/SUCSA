@@ -8,14 +8,15 @@ using System.Threading.Tasks;
 
 namespace SUCSA.DATA
 {
-    public class Admin
+    public class AcitivityCategory
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int AdminID { get; set; }
+        public int CategoryId { get; set; }
+
         [Required]
-        public string UserName { get; set; }
-        [Required]
-        public string PassWord { get; set; }
+        public string CategoryName { get; set; }
+
+        public virtual ICollection<Activity> Activities { get; set; }
     }
 }

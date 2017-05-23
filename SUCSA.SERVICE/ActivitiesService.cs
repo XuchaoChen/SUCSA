@@ -94,7 +94,7 @@ namespace SUCSA.SERVICE
 
         public List<string> getAllCategory()
         {
-            return context.Activities.Select(x => x.Category).Distinct().ToList();
+            return context.Categories.Select(x => x.CategoryName).ToList();
         }
 
         public List<Activity> GetActivitiesInARange(int currentPage, int maxRows)

@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using SUCSA.SERVICE;
 using SUCSA.DATA;
+using SUCSA.Models;
 
 namespace SUCSA.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         public ActionResult Supplier()
@@ -139,12 +141,12 @@ namespace SUCSA.Controllers
 
 
         [HttpPost]
-        public ActionResult CreateActivity(string category, string name, string des, HttpPostedFileBase file)
+        public ActionResult CreateActivity(int category, string name, string des, HttpPostedFileBase file)
         {
             using (var service = new ActivitiesService())
             {
                 var activity = new Activity();
-                activity.Category = category;
+                activity.CategoryId=category;
                 activity.PictureName = name;
                 activity.Description = des;
                 
@@ -201,19 +203,17 @@ namespace SUCSA.Controllers
             return Json(imgSrc);
         }
 
-        private SUCSA.Models.ActivityViewModels GetActivities(int currentPage)
+        private ActivityViewModels GetActivities(int currentPage)
         {
             //int maxRows = 10;
             int maxRows = 3;
-            using (var service = new ActivitiesService())
-            {
-                SUCSA.Models.ActivityViewModels activityModels = new SUCSA.Models.ActivityViewModels();
-                activityModels.activities = service.GetActivitiesInARange(currentPage, maxRows);
-                double pageCount = (double)((decimal)service.CountActivities() / Convert.ToDecimal(maxRows));
-                activityModels.PageCount = (int)Math.Ceiling(pageCount);
-                activityModels.CurrentPageIndex = currentPage;
-                return activityModels;
-            }
+            ActivityViewModels activityModels = new ActivityViewModels();
+            var service = new ActivitiesService();        
+            activityModels.activities = service.GetActivitiesInARange(currentPage, maxRows);
+            double pageCount = (double)((decimal)service.CountActivities() / Convert.ToDecimal(maxRows));
+            activityModels.PageCount = (int)Math.Ceiling(pageCount);
+            activityModels.CurrentPageIndex = currentPage;
+            return activityModels;
         }
     }
 }

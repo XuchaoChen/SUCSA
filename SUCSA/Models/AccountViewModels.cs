@@ -48,12 +48,10 @@ namespace SUCSA.Models
 
     public class LoginViewModel
     {
-        [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Required(ErrorMessage = "请输入管理员账号")]
+        public string Username { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "请输入密码")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
