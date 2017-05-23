@@ -1,37 +1,34 @@
-﻿@model SUCSA.Models.ActivityViewModels
-
+﻿@model SUCSA.Models.SupplierViewModels
 @{
-    ViewBag.Title = "Admin Home Page";
+    ViewBag.Title = "Admine Home Page";
 }
 
-
 <style type="text/css">
-    
     #index {
         border: 1px solid #ccc;
         border-collapse: collapse;
         background-color: #fff;
     }
 
-    #index th {
-        background-color: #B8DBFD;
-        color: #333;
-        font-weight: bold;
-    }
+        #index th {
+            background-color: #B8DBFD;
+            color: #333;
+            font-weight: bold;
+        }
 
-    #index th, #index td {
-        padding: 5px;
-        border: 1px solid #ccc;
-    }
+        #index th, #index td {
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
 
-    #index, #index #index td {
-        border: 0px solid#ccc;
-    }
+        #index, #index #index td {
+            border: 0px solid#ccc;
+        }
 </style>
 
 <div class="container">
     <nav class="navbar navbar-default" style="text-align:center">
-        <div class="navbar-text navbar-brand-centered" style="margin-left: auto;margin-right: auto;"><h1>活动照片管理</h1></div>
+        <div class="navbar-text navbar-brand-centered" style="margin-left: auto;margin-right: auto;"><h1>赞助商管理</h1></div>
     </nav>
     <div class="row">
 
@@ -44,8 +41,7 @@
                     <thead>
                         <tr>
                             <th></th>
-                            <th>活动</th>
-                            <th>照片名</th>
+                            <th>赞助商名</th>
                             <th>描述</th>
                             <th>是否置顶</th>
                             <th>预览</th>
@@ -60,24 +56,23 @@
                         {
                             <tr>
                                 <td><input type="checkbox" class="checkthis" /></td>
-                                <td>@item.CategoryId</td>
-                                <td>@item.PictureName</td>
+                                <td>@item.SupplierName</td>
                                 <td>@item.Description</td>
                                 <td>@item.IsTop</td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Top"><button data-id=@item.PictureID class="btn btn-primary btn-xs display" data-title="Display" data-toggle="modal" data-target="#display"><span class="glyphicon glyphicon-zoom-in"></span></button></p></td>
+                                <td><p data-placement="top" data-toggle="tooltip" title="Top"><button data-id=@item.SupplierID class="btn btn-primary btn-xs display" data-title="Display" data-toggle="modal" data-target="#display"><span class="glyphicon glyphicon-zoom-in"></span></button></p></td>
                                 @{
                                     if (item.IsTop == true)
                                     {
-                                        <td><p data-placement="top" data-toggle="tooltip" title="Top"><button data-id=@item.PictureID class="btn btn-danger btn-xs untop" data-title="Top" data-toggle="modal" data-target="#uptop"><span class="glyphicon glyphicon-download"></span></button></p></td>
+                                        <td><p data-placement="top" data-toggle="tooltip" title="Top"><button data-id=@item.SupplierID class="btn btn-danger btn-xs untop" data-title="Top" data-toggle="modal" data-target="#uptop"><span class="glyphicon glyphicon-download"></span></button></p></td>
                                     }
                                     else
                                     {
-                                        <td><p data-placement="top" data-toggle="tooltip" title="Top"><button data-id=@item.PictureID class="btn btn-primary btn-xs top" data-title="Top" data-toggle="modal" data-target="#top"><span class="glyphicon glyphicon-upload"></span></button></p></td>
+                                        <td><p data-placement="top" data-toggle="tooltip" title="Top"><button data-id=@item.SupplierID class="btn btn-primary btn-xs top" data-title="Top" data-toggle="modal" data-target="#top"><span class="glyphicon glyphicon-upload"></span></button></p></td>
                                     }
                                 }
 
-                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button data-id=@item.PictureID data-pic=@item.PictureName data-des=@item.Description class="btn btn-primary btn-xs edit" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button data-id=@item.PictureID class="btn btn-danger btn-xs delete" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button data-id=@item.SupplierID data-pic=@item.SupplierID data-des=@item.Description class="btn btn-primary btn-xs edit" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button data-id=@item.SupplierID class="btn btn-danger btn-xs delete" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
                             </tr>
                                     }
                     </tbody>
@@ -106,7 +101,7 @@
             </div>
 
         </div>
-        @using (Html.BeginForm("Index", "Admin", FormMethod.Post, new { id = "hiddenForm" }))
+        @using (Html.BeginForm("Supplier", "Admin", FormMethod.Post, new { id = "hiddenForm" }))
         {
             <input type="hidden" id="hfCurrentPageIndex" name="currentPage" />
         }
@@ -144,7 +139,7 @@
                 <input type="hidden" value="" id="untopId" />
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("reverseTop", "Admin")?id=' + $('#untopId').val()"><span class="glyphicon glyphicon-ok-sign"></span> 是</button>
+                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("ReverseTopSupplier", "Admin")?id=' + $('#untopId').val()"><span class="glyphicon glyphicon-ok-sign"></span> 是</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> 否</button>
             </div>
         </div>
@@ -164,7 +159,7 @@
                 <input type="hidden" value="" id="topId" />
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("reverseTop", "Admin")?id=' + $('#topId').val()"><span class="glyphicon glyphicon-ok-sign"></span> 是</button>
+                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("ReverseTopSupplier", "Admin")?id=' + $('#topId').val()"><span class="glyphicon glyphicon-ok-sign"></span> 是</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> 否</button>
             </div>
         </div>
@@ -181,24 +176,6 @@
             </div>
             <div class="modal-body">
                 <input type="hidden" value="" id="editId" />
-
-                <div class="form-group">
-                    <select class="form-control">
-                        @{
-                            List<string> list;
-                            using (var service = new SUCSA.SERVICE.ActivitiesService())
-                            {
-                                list = service.getAllCategory();
-                            }
-                        }
-                        @{
-                            foreach (var s in list)
-                            {
-                                <option>@s</option>
-                            }
-                        }
-                    </select>
-                </div>
                 <div class="form-group">
                     <input class="form-control " type="text" value="" id="editPic" />
 
@@ -208,7 +185,7 @@
                 </div>
             </div>
             <div class="modal-footer ">
-                <button type="button" onclick="location.href='@Url.Action("update", "Admin")?id=' + $('#editId').val() + '&name=' + $('#editPic').val() + '&des=' + $('#editDes').val()" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>  更新</button>
+                <button type="button" onclick="location.href='@Url.Action("UpdateSupplier", "Admin")?id=' + $('#editId').val() + '&name=' + $('#editPic').val() + '&des=' + $('#editDes').val()" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>  更新</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -222,29 +199,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                <h4 class="modal-title custom_align" id="Heading">修改</h4>
+                <h4 class="modal-title custom_align" id="Heading">新建</h4>
             </div>
             <div class="modal-body">
-                <form action="/Admin/Create" method="post" enctype="multipart/form-data">
+                <form action="/Admin/CreateSupplier" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label>活动</label>
-                        <select class="form-control" name="Category" id="Category">
-                            @{
-                                using (var service = new SUCSA.SERVICE.ActivitiesService())
-                                {
-                                    list = service.getAllCategory();
-                                }
-                            }
-                            @{
-                                foreach (var s in list)
-                                {
-                                    <option>@s</option>
-                                }
-                            }
-                        </select>
+                        <label>赞助商</label>
                     </div>
                     <div class="form-group">
-                        <label>照片名</label>
+                        <label>赞助商名</label>
                         <input class="form-control " type="text" value="" id="newPicName" name="name" />
 
                     </div>
@@ -282,7 +245,7 @@
 
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("delete", "Admin")?id= ' + $('#deleteId').val()"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("DeleteSupplier", "Admin")?id= ' + $('#deleteId').val()"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
             </div>
         </div>
@@ -299,7 +262,7 @@
         $(".modal-body #image").attr("src", id);*/
         $.ajax({
             type: "POST",
-            url: "/Admin/GetPicture",
+            url: "/Admin/GetPictureSupplier",
             data: '{id: "' + $(this).data('id') + '"  }',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -330,8 +293,6 @@
         $(".modal-body #editPic").val(pic);
         var des = $(this).data('des');
         $(".modal-body #editDes").val(des);
-        alert(id);
-        alert(pic);
     });
     $(".delete").on("click", function () {
         var id = $(this).data('id');
@@ -378,3 +339,4 @@
         $("#hiddenForm").submit();
     }
 </script>
+

@@ -10,31 +10,136 @@ namespace SUCSA.Controllers
 {
     public class AdminController : Controller
     {
-        // GET: Admin
-        public ActionResult Index()
+        public ActionResult Supplier()
         {
-            /*ICollection<Activity> activities;
-            using (var service = new ActivitiesService()){
-                activities = service.GetAllActivities();
-                //activities = service.GetAllTopActivities();
-            }
-            foreach(Activity a in activities)
+            return View(GetSupplier(1));
+        }
+
+        [HttpPost]
+        public ActionResult Supplier(int currentPage)
+        {
+            return View(GetSupplier(currentPage));
+        }
+
+        [HttpPost]
+        public ActionResult CreateSupplier(string name, string des, HttpPostedFileBase file)
+        {
+            using (var service = new SupplierService())
             {
-                a.Picture = null;
+                var supplier = new Supplier();
+                supplier.SupplierName = name;
+                supplier.Description = des;
+
+                System.Drawing.Image sourceimage = System.Drawing.Image.FromStream(file.InputStream);
+                supplier.Picture = SUCSA.DATA.ByteHelper.ImageToByteArray(sourceimage);
+
+                supplier.IsTop = false;
+                service.AddSupplier(supplier);
             }
-            return View(activities);*/
+            return RedirectToAction("Supplier");
+        }
+
+        public ActionResult UpdateSupplier(int id, string name, string des)
+        {
+            using (var service = new SupplierService())
+            {
+                var supplier = service.GetSupplierByID(id);
+                supplier.SupplierName = name;
+                supplier.Description = des;
+                service.updateSupplier(supplier);
+            }
+            return RedirectToAction("Supplier");
+        }
+
+        public ActionResult DeleteSupplier(int id)
+        {
+            using (var service = new SupplierService())
+            {
+                var supplier = service.GetSupplierByID(id);
+                service.RemoveSupplier(supplier);
+            }
+            return RedirectToAction("Supplier");
+        }
+
+        [HttpPost]
+        public JsonResult GetPictureSupplier(int id)
+        {
+            byte[] pic;
+            using (var service = new SupplierService())
+            {
+                pic = service.GetSupplierByID(id).Picture;
+            }
+            var base64 = Convert.ToBase64String(pic);
+            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+            return Json(imgSrc);
+        }
+
+        public ActionResult ReverseTopSupplier(int id)
+        {
+            using (var service = new SupplierService())
+            {
+                var supplier = service.GetSupplierByID(id);
+                supplier.IsTop = !supplier.IsTop;
+                service.updateSupplier(supplier);
+            }
+            return RedirectToAction("Supplier");
+        }
+
+        private SUCSA.Models.SupplierViewModels GetSupplier(int currentPage)
+        {
+            //int maxRows = 10;
+            int maxRows = 3;
+            using (var service = new SupplierService())
+            {
+                SUCSA.Models.SupplierViewModels supplierModels = new SUCSA.Models.SupplierViewModels();
+                supplierModels.activities = service.GetSupplierInARange(currentPage, maxRows);
+                double pageCount = (double)((decimal)service.CountSuppliers() / Convert.ToDecimal(maxRows));
+                supplierModels.PageCount = (int)Math.Ceiling(pageCount);
+                supplierModels.CurrentPageIndex = currentPage;
+                return supplierModels;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // GET: Admin
+        public ActionResult Activity()
+        {
             return View(GetActivities(1));
         }
 
         [HttpPost]
-        public ActionResult Index(int currentPage)
+        public ActionResult Activity(int currentPage)
         {
             return View(GetActivities(currentPage));
         }
 
 
         [HttpPost]
-        public ActionResult Create(string category, string name, string des, HttpPostedFileBase file)
+        public ActionResult CreateActivity(string category, string name, string des, HttpPostedFileBase file)
         {
             using (var service = new ActivitiesService())
             {
@@ -49,20 +154,20 @@ namespace SUCSA.Controllers
                 activity.IsTop = false;
                 service.AddActivity(activity);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Activity");
         }
 
-        public ActionResult reverseTop(int id)
+        public ActionResult ReverseTopActivity(int id)
         {
             using(var service = new ActivitiesService()){
                 var activity = service.GetActivityById(id);
                 activity.IsTop = !activity.IsTop;
                 service.updateActivity(activity);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Activity");
         }
 
-        public ActionResult update(int id, string name, string des)
+        public ActionResult UpdateActivity(int id, string name, string des)
         {
             using(var service =  new ActivitiesService()){
                 var activity = service.GetActivityById(id);
@@ -70,21 +175,21 @@ namespace SUCSA.Controllers
                 activity.Description = des;
                 service.updateActivity(activity);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Activity");
         }
 
-        public ActionResult delete(int id)
+        public ActionResult DeleteActivity(int id)
         {
             using (var service = new ActivitiesService())
             {
                 var activity = service.GetActivityById(id);
                 service.RemoveActivity(activity);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Activity");
         }
 
         [HttpPost]
-        public JsonResult GetPicture(int id)
+        public JsonResult GetPictureActivity(int id)
         {
             byte[] pic;
             using (var service = new ActivitiesService())
@@ -103,15 +208,10 @@ namespace SUCSA.Controllers
             using (var service = new ActivitiesService())
             {
                 SUCSA.Models.ActivityViewModels activityModels = new SUCSA.Models.ActivityViewModels();
-
                 activityModels.activities = service.GetActivitiesInARange(currentPage, maxRows);
-                    
-
                 double pageCount = (double)((decimal)service.CountActivities() / Convert.ToDecimal(maxRows));
                 activityModels.PageCount = (int)Math.Ceiling(pageCount);
-
                 activityModels.CurrentPageIndex = currentPage;
-
                 return activityModels;
             }
         }
