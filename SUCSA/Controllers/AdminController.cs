@@ -102,31 +102,6 @@ namespace SUCSA.Controllers
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // GET: Admin
         public ActionResult Activity()
         {
@@ -141,15 +116,23 @@ namespace SUCSA.Controllers
 
 
         [HttpPost]
-        public ActionResult CreateActivity(int category, string name, string des, HttpPostedFileBase file)
+        public ActionResult CreateActivity(int? category, string new_activity, string name, string des, HttpPostedFileBase file)
         {
             using (var service = new ActivitiesService())
             {
                 var activity = new Activity();
-                activity.CategoryId=category;
+                if (new_activity.Equals("") == false)
+                {
+                    AcitivityCategory newCategory = new AcitivityCategory();
+                    newCategory.CategoryName = new_activity;
+                    service.AddCategory(newCategory);
+                    category = service.GetCategoryByName(new_activity).CategoryId;
+
+                }
+                activity.CategoryId = (int)category;
                 activity.PictureName = name;
                 activity.Description = des;
-                
+
                 System.Drawing.Image sourceimage = System.Drawing.Image.FromStream(file.InputStream);
                 activity.Picture = SUCSA.DATA.ByteHelper.ImageToByteArray(sourceimage);
 

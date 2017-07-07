@@ -244,9 +244,12 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label><input type="checkbox" value="" onclick="newActivity()"/>   新的活动</label> 
+                        <input class="form-control " type="text" value="" id="new_activity" name="new_activity" disabled/>
+                    </div>
+                    <div class="form-group">
                         <label>照片名</label>
                         <input class="form-control " type="text" value="" id="newPicName" name="name" />
-
                     </div>
                     <div class="form-group">
                         <label>描述</label>
@@ -374,5 +377,17 @@
     function PagerClick(index) {
         $("#hfCurrentPageIndex").val(index);
         $("#hiddenForm").submit();
+    }
+
+    function newActivity() {
+        var flag = $("#new_activity").prop('disabled');
+        if (flag == true) {
+            $("#new_activity").prop('disabled', false);
+            $("#Category").prop('disabled', true);
+        } else {
+            $("#new_activity").prop('disabled', true);
+            $("#Category").prop('disabled', false);
+        }
+        
     }
 </script>

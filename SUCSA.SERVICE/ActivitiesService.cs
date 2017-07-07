@@ -97,6 +97,21 @@ namespace SUCSA.SERVICE
             return context.Categories.Select(x => x.CategoryName).ToList();
         }
 
+        public bool AddCategory(AcitivityCategory category)
+        {
+            if (context.Categories.Add(category) == null)
+            {
+                return false;
+            }
+            context.SaveChanges();
+            return true;
+        }
+
+        public AcitivityCategory GetCategoryByName(string name)
+        {
+            return context.Categories.Where(x => x.CategoryName == name).FirstOrDefault();
+        }
+
         public List<Activity> GetActivitiesInARange(int currentPage, int maxRows)
         {
             return context.Activities.OrderBy(x=>x.PictureID).Skip((currentPage - 1) * maxRows).Take(maxRows).ToList();
