@@ -21,8 +21,23 @@
         </button>
         <!-- Top Navigation: Left Menu -->
         <ul class="nav navbar-nav navbar-left navbar-top-links">
-            <li><a href="#"><i class="fa fa-home fa-fw"></i> Website</a></li>
+            <li>@Html.ActionLink("主页","Index","Home")</li>
         </ul>
+        @if (HttpContext.Current.User.Identity.Name.Length>0)
+        {
+        <ul class="nav navbar-right navbar-top-links">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Hello @HttpContext.Current.User.Identity.Name <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li>
+                        @Html.ActionLink("退出登录", "Logout", "Account")
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        }
         </nav>
         <div class="container body-content">
             @RenderBody()

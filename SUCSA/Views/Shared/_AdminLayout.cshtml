@@ -31,7 +31,7 @@
             </button>
             <!-- Top Navigation: Left Menu -->
             <ul class="nav navbar-nav navbar-left navbar-top-links">
-                <li>@Html.ActionLink("主页","Index","Home")</li>
+                <li>@Html.ActionLink("主页", "Index", "Home")</li>
             </ul>
             <!-- Top Navigation: Right Menu -->
             <ul class="nav navbar-right navbar-top-links">
@@ -41,14 +41,11 @@
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li>
-                            <a href="#">User Profile</a>
-                        </li>
-                        <li>
-                            <a href="#">Settings</a>
+                           @Html.ActionLink("修改密码", "ResetPassword", "Account")
                         </li>
                         <li class="divider"></li>
                         <li>
-                            @Html.ActionLink("Logout", "Logout", "Account");
+                            @Html.ActionLink("退出登录", "Logout", "Account")
                         </li>
                     </ul>
                 </li>
@@ -59,13 +56,13 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href="#" class="active">活动照片管理</a>
+                            @Html.ActionLink("活动管理", "Activity", "Admin", new { @class = "active" })
                         </li>
                         <li>
-                            <a href="#" class="active">赞助商管理</a>
+                           @Html.ActionLink("赞助商管理", "Supplier", "Admin", new {@class="active"})
                         </li>
                         <li>
-                            <a href="#" class="active">权限管理</a>
+                            @Html.ActionLink("账号管理","AdminManagement","Admin",new {@class="active"})
                         </li>
 
                     </ul>

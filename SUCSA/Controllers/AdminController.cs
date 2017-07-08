@@ -12,6 +12,10 @@ namespace SUCSA.Controllers
     [Authorize]
     public class AdminController : Controller
     {
+        public ActionResult Index()
+        {
+            return RedirectToAction("Activity", "Admin");
+        }
         public ActionResult Supplier()
         {
             return View(GetSupplier(1));

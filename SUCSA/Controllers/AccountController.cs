@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using SUCSA.Models;
 using SUCSA.SERVICE;
 using System.Web.Security;
+using SUCSA.DATA;
 
 namespace SUCSA.Controllers
 {
@@ -21,7 +22,6 @@ namespace SUCSA.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-           // if(FormsAuthentication.GetAuthCookie())
             ViewBag.ReturnUrl = returnUrl;
             ModelState.Clear();
             return View();
@@ -70,6 +70,35 @@ namespace SUCSA.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Login", "Account");
+        }
+
+        [HttpGet]
+        public ActionResult ResetPassword()
+        {
+            ModelState.Clear();
+            return View("ResetPassword");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(ResetPasswordViewModel model)
+        {
+            string userName = System.Web.HttpContext.Current.User.Identity.Name;
+            if (!ModelState.IsValid)
+            {
+                return View("RestPassword");
+            }
+            using (var service=new AdminService())
+            {
+                var admin = service.GetAdminByName(userName);
+                if (admin.PassWord != model.OldPassword)
+                {
+                    ModelState.AddModelError("", "旧密码不正确");
+                    return View();
+                }
+                service.ChangePassword(admin.AdminID, model.NewPassword);
+            }
+            return RedirectToAction("Activity", "Admin");
         }
     }
        

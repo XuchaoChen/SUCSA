@@ -18,8 +18,6 @@ namespace SUCSA.DATA
         [Required]
         public string SupplierName { get; set; }
 
-        [Required]
-        [DefaultValue("")]
         public string Description { get; set; }
 
         [Required]

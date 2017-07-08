@@ -3,48 +3,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SUCSA.Models
 {
-    public class ExternalLoginConfirmationViewModel
-    {
-        [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-    }
-
-    public class ExternalLoginListViewModel
-    {
-        public string ReturnUrl { get; set; }
-    }
-
-    public class SendCodeViewModel
-    {
-        public string SelectedProvider { get; set; }
-        public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
-        public string ReturnUrl { get; set; }
-        public bool RememberMe { get; set; }
-    }
-
-    public class VerifyCodeViewModel
-    {
-        [Required]
-        public string Provider { get; set; }
-
-        [Required]
-        [Display(Name = "Code")]
-        public string Code { get; set; }
-        public string ReturnUrl { get; set; }
-
-        [Display(Name = "Remember this browser?")]
-        public bool RememberBrowser { get; set; }
-
-        public bool RememberMe { get; set; }
-    }
-
-    public class ForgotViewModel
-    {
-        [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-    }
 
     public class LoginViewModel
     {
@@ -60,51 +18,24 @@ namespace SUCSA.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
-    {
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-        public string ConfirmPassword { get; set; }
-    }
 
     public class ResetPasswordViewModel
     {
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage ="请输入旧密码")]
+        [StringLength(100)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
-        public string Password { get; set; }
+        public string OldPassword { get; set; }
+
+        [Required(ErrorMessage = "请输入新密码")]
+        [StringLength(100, ErrorMessage = "新密码长度至少为6", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("NewPassword", ErrorMessage = "新旧密码不一致。")]
         public string ConfirmPassword { get; set; }
-
-        public string Code { get; set; }
-    }
-
-    public class ForgotPasswordViewModel
-    {
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
     }
 }
