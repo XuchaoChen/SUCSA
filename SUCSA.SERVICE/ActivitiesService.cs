@@ -92,9 +92,9 @@ namespace SUCSA.SERVICE
             return true;
         }
 
-        public List<string> getAllCategory()
+        public List<AcitivityCategory> getAllCategory()
         {
-            return context.Categories.Select(x => x.CategoryName).ToList();
+            return context.Categories.ToList();
         }
 
         public bool AddCategory(AcitivityCategory category)

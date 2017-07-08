@@ -47,11 +47,10 @@ namespace SUCSA.Controllers
                 }
                 else
                 {
-                    FormsAuthentication.SetAuthCookie(model.Username,false);
+                    FormsAuthentication.SetAuthCookie(model.Username,model.RememberMe);
                     return RedirectToAction("Activity", "Admin");
                 }
             }
-
         }
 
         private bool Login(LoginViewModel model)
@@ -65,6 +64,12 @@ namespace SUCSA.Controllers
                 }
             }
             return true;
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Account");
         }
     }
        

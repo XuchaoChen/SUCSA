@@ -121,7 +121,7 @@ namespace SUCSA.Controllers
             using (var service = new ActivitiesService())
             {
                 var activity = new Activity();
-                if (new_activity.Equals("") == false)
+                if (new_activity!=null)
                 {
                     AcitivityCategory newCategory = new AcitivityCategory();
                     newCategory.CategoryName = new_activity;
@@ -188,8 +188,7 @@ namespace SUCSA.Controllers
 
         private ActivityViewModels GetActivities(int currentPage)
         {
-            //int maxRows = 10;
-            int maxRows = 3;
+           int maxRows = 5;
             ActivityViewModels activityModels = new ActivityViewModels();
             var service = new ActivitiesService();        
             activityModels.activities = service.GetActivitiesInARange(currentPage, maxRows);

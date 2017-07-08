@@ -1,5 +1,5 @@
 ﻿@model SUCSA.Models.ActivityViewModels
-
+@using SUCSA.DATA
 @{
     ViewBag.Title = "Admin Home Page";
 }
@@ -185,7 +185,7 @@
                 <div class="form-group">
                     <select class="form-control">
                         @{
-                            List<string> list;
+                            List<AcitivityCategory> list;
                             using (var service = new SUCSA.SERVICE.ActivitiesService())
                             {
                                 list = service.getAllCategory();
@@ -194,7 +194,7 @@
                         @{
                             foreach (var s in list)
                             {
-                                <option>@s</option>
+                                <option value="@s.CategoryId">@s.CategoryName</option>
                             }
                         }
                     </select>
@@ -238,7 +238,7 @@
                             @{
                                 foreach (var s in list)
                                 {
-                                    <option>@s</option>
+                                    <option value="@s.CategoryId">@s.CategoryName</option>
                                 }
                             }
                         </select>
