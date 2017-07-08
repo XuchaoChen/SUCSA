@@ -156,10 +156,11 @@ namespace SUCSA.Controllers
             return RedirectToAction("Activity");
         }
 
-        public ActionResult UpdateActivity(int id, string name, string des)
+        public ActionResult UpdateActivity(int id,int cat,string name, string des)
         {
             using(var service =  new ActivitiesService()){
                 var activity = service.GetActivityById(id);
+                activity.CategoryId = cat;
                 activity.PictureName = name;
                 activity.Description = des;
                 service.updateActivity(activity);
