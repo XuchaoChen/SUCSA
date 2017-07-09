@@ -429,7 +429,8 @@ Features
 .intro {
 	width:100%;
 	position:relative;	
-	background: url(../img/bg1.jpg) no-repeat top center;
+	background: url(../img/building.gif) no-repeat top center;
+    background-size: 100% 100%;
 }
 
 #intro.intro {

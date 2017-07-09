@@ -234,6 +234,11 @@ namespace SUCSA.Controllers
         {
             using (var service = new AdminService())
             {
+                if (service.GetAdminByName(newAdmin) != null)
+                {
+                    TempData["notice"] = "创建失败，用户名已存在！";
+                    return RedirectToAction("Admin");
+                }
                 var admin = new Admin();
                 admin.UserName = newAdmin;
                 admin.PassWord = newPassowrd;

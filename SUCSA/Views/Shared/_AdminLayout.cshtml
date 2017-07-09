@@ -15,6 +15,15 @@
     <link href="~/Content/startmin.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css">
+    @{
+        var message = TempData["notice"] ?? string.Empty;
+    }
+    <script>
+        var message = '@message';
+        if (message) {
+            alert(message);
+        }
+    </script>
 </head>
 <body>
     <div id="wrapper">

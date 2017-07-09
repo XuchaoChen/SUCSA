@@ -261,8 +261,8 @@
     <Content Include="img\Activities\tn_8.jpg" />
     <Content Include="img\Activities\tn_9.jpg" />
     <Content Include="img\background.jpg" />
-    <Content Include="img\bg1.jpg" />
-    <Content Include="img\bg22.jpg" />
+    <Content Include="img\building.gif" />
+    <Content Include="img\daily.gif" />
     <Content Include="img\icons\button-icons.png" />
     <Content Include="img\icons\grid-menu-icons.png" />
     <Content Include="img\icons\menu-icons.png" />
@@ -282,6 +282,7 @@
     <Content Include="img\supplier\chef_logo.png" />
     <Content Include="img\supplier\kiva_logo.png" />
     <Content Include="img\team\1.png" />
+    <Content Include="img\bg22.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.eot" />
@@ -365,6 +366,7 @@
     <Content Include="Views\Shared\_loginLayout.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\ActivityPic\Index.cshtml" />
+    <Content Include="Views\Admin\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
