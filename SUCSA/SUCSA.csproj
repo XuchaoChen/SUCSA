@@ -258,6 +258,8 @@
     <Content Include="img\loader.gif" />
     <Content Include="img\logo.jpg" />
     <Content Include="img\spinner.gif" />
+    <Content Include="img\supplier\chef_logo.png" />
+    <Content Include="img\supplier\kiva_logo.png" />
     <Content Include="img\team\1.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

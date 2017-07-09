@@ -40,6 +40,12 @@ namespace SUCSA.DATA
                     new Activity(){CategoryId=1,IsTop=true,PictureName="4",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\Activities\4.jpg")) },
                     new Activity(){CategoryId=1,IsTop=true,PictureName="5",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\Activities\5.jpg")) },
                 };
+
+                var suppliers = new List<Supplier>
+                {
+                    new Supplier(){ SupplierName = "chef", Description="chef", Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\supplier\chef_logo.png")), IsTop=false},
+                    new Supplier(){ SupplierName = "kiva", Description="kiva", Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\supplier\kiva_logo.png")), IsTop=false}
+                };
                 foreach(AcitivityCategory a in categories)
                 {
                     ctx.Categories.Add(a);
@@ -47,6 +53,10 @@ namespace SUCSA.DATA
                 foreach(Activity a in activities)
                 {
                     ctx.Activities.Add(a); 
+                }
+                foreach(Supplier s in suppliers)
+                {
+                    ctx.Suppliers.Add(s);
                 }
                 foreach(Admin a in admins)
                 {
