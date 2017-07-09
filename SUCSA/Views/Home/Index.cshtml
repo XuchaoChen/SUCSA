@@ -1,4 +1,5 @@
-﻿@{
+﻿@model SUCSA.Models.HomePageViewModels
+@{
     ViewBag.Title = "Home Page";
 }
 @using SUCSA.DATA
@@ -20,13 +21,16 @@
         <div id="wrapper">
             <div class="slider-wrapper theme-default">
                 <div id="slider" class="nivoSlider">
-                    @foreach(var item in Model)
+                    @foreach (var item in Model.activities)
                     {
                         var base64 = Convert.ToBase64String(item.Picture);
                         var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
                         <img src=@imgSrc alt="" title=@item.Description/>
                     }
                 </div>
+            </div>
+            <div style="margin-left:1000px; padding-right:40px; width:200px">
+                @Html.ActionLink("More", "Index", "Home", new { target = "_blank" })
             </div>
         </div>
     </div>
@@ -41,6 +45,7 @@
                     <div class="wow bounceInDown" data-wow-delay="0.4s">
                         <div class="section-heading">
                             <h2>赞助合作伙伴</h2>
+
                         </div>
                     </div>
                 </div>
@@ -48,14 +53,35 @@
         </div>
     </div>
     <div class="container" id="contact-us">
+
+
         <div class="row">
             <div class="col-lg-10">
-                <div class="boxed-grey">
+                <div class="">
+                    @foreach (var item in Model.suppliers)
+                    {
+                        <div class="sponsor" title="Click to flip">
+                            <div class="sponsorFlip">
+                                @{
+                                    var base64 = Convert.ToBase64String(item.Picture);
+                                    var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                                }
+                                <img src=@imgSrc alt="More about this company" style="width:180px; height:180px">
+                            </div>
+
+                            <div class="sponsorData">
+                                <div class="sponsorDescription">
+                                    @item.Description
+                                </div>
+                            </div>
+                        </div>
+                      }
                 </div>
             </div>
 
-            <div class="col-lg-2" id="contact-us" >
+            <div class="col-lg-2" id="contact-us">
                 <div class="widget-contact">
+
                     <h5>联系我们</h5>
 
                     <address>
@@ -101,3 +127,4 @@
         </div>
     </div>
 </footer>
+
