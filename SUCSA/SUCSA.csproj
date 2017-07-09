@@ -316,7 +316,7 @@
     <Content Include="font-awesome\scss\_spinning.scss" />
     <Content Include="font-awesome\scss\_stacked.scss" />
     <Content Include="font-awesome\scss\_variables.scss" />
-    <None Include="Properties\PublishProfiles\SUCSA20170426050210 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\SUCSA-Beta.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
