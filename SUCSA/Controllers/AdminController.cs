@@ -12,10 +12,6 @@ namespace SUCSA.Controllers
     [Authorize]
     public class AdminController : Controller
     {
-        public ActionResult Index()
-        {
-            return RedirectToAction("Activity", "Admin");
-        }
         public ActionResult Supplier()
         {
             return View(GetSupplier(1));
@@ -105,8 +101,7 @@ namespace SUCSA.Controllers
                 return supplierModels;
             }
         }
-
-        // GET: Admin
+    
         public ActionResult Activity()
         {
             return View(GetActivities(1));
@@ -201,6 +196,50 @@ namespace SUCSA.Controllers
             activityModels.PageCount = (int)Math.Ceiling(pageCount);
             activityModels.CurrentPageIndex = currentPage;
             return activityModels;
+        }
+
+        public ActionResult Admin()
+        {
+            return View(GetAdmins(1));
+        }
+
+        [HttpPost]
+        public ActionResult Admin(int currentPage)
+        {
+            return View(GetAdmins(currentPage));
+        }
+
+        private AccountViewModels GetAdmins(int currentPage)
+        {
+            int maxRows = 5;
+            AccountViewModels accountModels = new AccountViewModels();
+            var service = new AdminService();
+            accountModels.Admins = service.GetAdminsInARange(currentPage, maxRows);
+            double pageCount = (double)((decimal)service.CountAdmins() / Convert.ToDecimal(maxRows));
+            accountModels.PageCount = (int)Math.Ceiling(pageCount);
+            accountModels.CurrentPageIndex = currentPage;
+            return accountModels;
+        }
+
+        public ActionResult DeleteAdmin(int id)
+        {
+            using (var service = new AdminService())
+            {
+                service.DeleteAdmin(id);
+            }
+            return RedirectToAction("Admin");
+        }
+
+        public ActionResult CreateAdmin(string newAdmin, string newPassowrd)
+        {
+            using (var service = new AdminService())
+            {
+                var admin = new Admin();
+                admin.UserName = newAdmin;
+                admin.PassWord = newPassowrd;
+                service.AddAdmin(admin);
+            }
+            return RedirectToAction("Admin");
         }
     }
 }

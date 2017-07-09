@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,8 +22,8 @@ namespace SUCSA.DATA
             {
                 var admins = new List<Admin>
                 {
-                    new Admin() {UserName="admin1",PassWord="admin1" },
-                    new Admin() {UserName="admin2",PassWord="admin2" }
+                    new Admin() {UserName="admin1",PassWord=Encrypt("admin1") },
+                    new Admin() {UserName="admin2",PassWord=Encrypt("admin2") }
                 };
 
                 var categories = new List<AcitivityCategory>
@@ -64,6 +65,13 @@ namespace SUCSA.DATA
                 }
                 ctx.SaveChanges();
             }
+        }
+
+        static string Encrypt(string password)
+        {
+            var data = Encoding.Unicode.GetBytes(password);
+            byte[] encrypted = ProtectedData.Protect(data, null, DataProtectionScope.CurrentUser);
+            return Convert.ToBase64String(encrypted);
         }
     }
 }
