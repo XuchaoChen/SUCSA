@@ -211,6 +211,7 @@
     <Content Include="Content\light\loading.gif" />
     <Content Include="Content\nivo-slider.css" />
     <Content Include="Content\photobox.css" />
+    <Content Include="Content\photobox_page.css" />
     <Content Include="Content\startmin.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />

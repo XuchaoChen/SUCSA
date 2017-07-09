@@ -115,7 +115,7 @@ namespace SUCSA.Controllers
 
 
         [HttpPost]
-        public ActionResult CreateActivity(int? category, string new_activity, string name, string des, HttpPostedFileBase file)
+        public ActionResult CreateActivity(int? category, string new_activity, string name, string des, HttpPostedFileBase file, HttpPostedFileBase newThumbnail)
         {
             using (var service = new ActivitiesService())
             {
@@ -134,6 +134,9 @@ namespace SUCSA.Controllers
 
                 System.Drawing.Image sourceimage = System.Drawing.Image.FromStream(file.InputStream);
                 activity.Picture = SUCSA.DATA.ByteHelper.ImageToByteArray(sourceimage);
+
+                System.Drawing.Image thumbnail = System.Drawing.Image.FromStream(newThumbnail.InputStream);
+                activity.Thumbnails = SUCSA.DATA.ByteHelper.ImageToByteArray(thumbnail);
 
                 activity.IsTop = false;
                 service.AddActivity(activity);

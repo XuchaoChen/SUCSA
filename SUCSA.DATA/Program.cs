@@ -35,11 +35,11 @@ namespace SUCSA.DATA
                 {
 
                     
-                    new Activity(){CategoryId=1,IsTop=true,PictureName="1",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\Activities\1.jpg")) },
-                    new Activity(){CategoryId=1,IsTop=true,PictureName="2",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\Activities\2.jpg")) },
-                    new Activity(){CategoryId=1,IsTop=true,PictureName="3",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\Activities\3.jpg")) },
-                    new Activity(){CategoryId=1,IsTop=true,PictureName="4",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\Activities\4.jpg")) },
-                    new Activity(){CategoryId=1,IsTop=true,PictureName="5",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\Activities\5.jpg")) },
+                    new Activity(){CategoryId=1,IsTop=true,PictureName="1",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\Activities\1.jpg")), Thumbnails=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\Activities\tn_1.jpg")) },
+                    new Activity(){CategoryId=1,IsTop=true,PictureName="2",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\Activities\2.jpg")), Thumbnails=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\Activities\tn_2.jpg"))},
+                    new Activity(){CategoryId=1,IsTop=true,PictureName="3",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\Activities\3.jpg")), Thumbnails=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\Activities\tn_3.jpg")) },
+                    new Activity(){CategoryId=2,IsTop=true,PictureName="4",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\Activities\4.jpg")), Thumbnails=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\Activities\tn_4.jpg")) },
+                    new Activity(){CategoryId=2,IsTop=true,PictureName="5",Picture=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\Activities\5.jpg")), Thumbnails=ByteHelper.ImageToByteArray(ByteHelper.LoadImageFromDisk(base_path+@"SUCSA\img\Activities\tn_5.jpg")) },
                 };
 
                 var suppliers = new List<Supplier>

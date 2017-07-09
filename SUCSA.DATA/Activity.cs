@@ -25,6 +25,10 @@ namespace SUCSA.DATA
         public string Description { get; set; }
         [Required]
         public byte[] Picture { get; set; }
+
+        [Required]
+        public byte[] Thumbnails { get; set; }
+
         [Required]
         public bool IsTop { get; set; }
     }
