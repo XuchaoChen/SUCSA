@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SUCSA.DATA;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace SUCSA.Models
@@ -37,5 +38,12 @@ namespace SUCSA.Models
         [Display(Name = "Confirm password")]
         [Compare("NewPassword", ErrorMessage = "新旧密码不一致。")]
         public string ConfirmPassword { get; set; }
+    }
+
+    public class AccountViewModels
+    {
+        public List<Admin> Admins { get; set; }
+        public int CurrentPageIndex { get; set; }
+        public int PageCount { get; set; }
     }
 }

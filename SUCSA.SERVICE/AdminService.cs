@@ -50,5 +50,15 @@ namespace SUCSA.SERVICE
             }
             return false;
         }
+
+        public List<Admin> GetAdminsInARange(int currentPage, int maxRows)
+        {
+            return context.Admins.OrderBy(x => x.AdminID).Skip((currentPage - 1) * maxRows).Take(maxRows).ToList();
+        }
+
+        public int CountAdmins()
+        {
+            return context.Admins.Count();
+        }
     }
 }

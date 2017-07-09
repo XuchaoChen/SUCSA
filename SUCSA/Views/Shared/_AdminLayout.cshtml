@@ -61,10 +61,12 @@
                         <li>
                            @Html.ActionLink("赞助商管理", "Supplier", "Admin", new {@class="active"})
                         </li>
+                        @if (new SUCSA.SERVICE.AdminService().GetAdminByName(HttpContext.Current.User.Identity.Name).AdminID == 1)
+                        {
                         <li>
-                            @Html.ActionLink("账号管理","AdminManagement","Admin",new {@class="active"})
+                            @Html.ActionLink("账号管理", "Admin", "Admin", new { @class = "active" })
                         </li>
-
+                        }
                     </ul>
                 </div>
             </div>
