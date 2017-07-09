@@ -71,7 +71,7 @@
                                     }
                                 }
 
-                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button data-id=@item.SupplierID data-pic=@item.SupplierID data-des=@item.Description class="btn btn-primary btn-xs edit" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button data-id=@item.SupplierID data-pic=@item.SupplierName class="btn btn-primary btn-xs edit" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                                 <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button data-id=@item.SupplierID class="btn btn-danger btn-xs delete" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
                             </tr>
                                     }
@@ -117,7 +117,7 @@
                 <h4 class="modal-title custom_align" id="Heading">显示照片</h4>
             </div>
             <div class="modal-body">
-                <img id="image" src="" style="width: 500px; height:500px; margin-left:30px;" />
+                <img id="image" src="" style="width: 200px; height:200px; margin-left:30px;" />
             </div>
             <div class="modal-footer ">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> 关闭</button>
@@ -176,10 +176,11 @@
             </div>
             <div class="modal-body">
                 <input type="hidden" value="" id="editId" />
+                <label>赞助商名</label>
                 <div class="form-group">
                     <input class="form-control " type="text" value="" id="editPic" />
-
                 </div>
+                <label>赞助商描述</label>
                 <div class="form-group">
                     <input class="form-control " type="text" value="" id="editDes" />
                 </div>
@@ -291,8 +292,6 @@
         $(".modal-body #editId").val(id);
         var pic = $(this).data('pic');
         $(".modal-body #editPic").val(pic);
-        var des = $(this).data('des');
-        $(".modal-body #editDes").val(des);
     });
     $(".delete").on("click", function () {
         var id = $(this).data('id');

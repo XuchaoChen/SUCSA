@@ -6,9 +6,13 @@
         layout = "~/Views/Shared/_AdminLayout.cshtml";
         //layout = "~/Views/Shared/_Layout.cshtml";
     }
-    else
+    else if(controller=="Home")
     {
         layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        layout = "~/Views/Shared/_loginLayout.cshtml";
     }
     Layout = layout;
 }

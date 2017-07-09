@@ -15,7 +15,10 @@ namespace SUCSA.DATA
         public int PictureID { get; set; }
 
         [Required]
-        public string Category { get; set; }
+        public int CategoryId { get; set; }
+
+        [ForeignKey("CategoryId")]
+        public virtual AcitivityCategory Category { get; set; }
 
         [Required]
         public string PictureName { get; set; }

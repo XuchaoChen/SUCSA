@@ -5,11 +5,17 @@ using System.Web;
 using System.Web.Mvc;
 using SUCSA.SERVICE;
 using SUCSA.DATA;
+using SUCSA.Models;
 
 namespace SUCSA.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
+        public ActionResult Index()
+        {
+            return RedirectToAction("Activity", "Admin");
+        }
         public ActionResult Supplier()
         {
             return View(GetSupplier(1));
@@ -100,31 +106,6 @@ namespace SUCSA.Controllers
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // GET: Admin
         public ActionResult Activity()
         {
@@ -139,15 +120,23 @@ namespace SUCSA.Controllers
 
 
         [HttpPost]
-        public ActionResult CreateActivity(string category, string name, string des, HttpPostedFileBase file)
+        public ActionResult CreateActivity(int? category, string new_activity, string name, string des, HttpPostedFileBase file)
         {
             using (var service = new ActivitiesService())
             {
                 var activity = new Activity();
-                activity.Category = category;
+                if (new_activity!=null)
+                {
+                    AcitivityCategory newCategory = new AcitivityCategory();
+                    newCategory.CategoryName = new_activity;
+                    service.AddCategory(newCategory);
+                    category = service.GetCategoryByName(new_activity).CategoryId;
+
+                }
+                activity.CategoryId = (int)category;
                 activity.PictureName = name;
                 activity.Description = des;
-                
+
                 System.Drawing.Image sourceimage = System.Drawing.Image.FromStream(file.InputStream);
                 activity.Picture = SUCSA.DATA.ByteHelper.ImageToByteArray(sourceimage);
 
@@ -167,10 +156,11 @@ namespace SUCSA.Controllers
             return RedirectToAction("Activity");
         }
 
-        public ActionResult UpdateActivity(int id, string name, string des)
+        public ActionResult UpdateActivity(int id,int cat,string name, string des)
         {
             using(var service =  new ActivitiesService()){
                 var activity = service.GetActivityById(id);
+                activity.CategoryId = cat;
                 activity.PictureName = name;
                 activity.Description = des;
                 service.updateActivity(activity);
@@ -201,19 +191,16 @@ namespace SUCSA.Controllers
             return Json(imgSrc);
         }
 
-        private SUCSA.Models.ActivityViewModels GetActivities(int currentPage)
+        private ActivityViewModels GetActivities(int currentPage)
         {
-            //int maxRows = 10;
-            int maxRows = 3;
-            using (var service = new ActivitiesService())
-            {
-                SUCSA.Models.ActivityViewModels activityModels = new SUCSA.Models.ActivityViewModels();
-                activityModels.activities = service.GetActivitiesInARange(currentPage, maxRows);
-                double pageCount = (double)((decimal)service.CountActivities() / Convert.ToDecimal(maxRows));
-                activityModels.PageCount = (int)Math.Ceiling(pageCount);
-                activityModels.CurrentPageIndex = currentPage;
-                return activityModels;
-            }
+           int maxRows = 5;
+            ActivityViewModels activityModels = new ActivityViewModels();
+            var service = new ActivitiesService();        
+            activityModels.activities = service.GetActivitiesInARange(currentPage, maxRows);
+            double pageCount = (double)((decimal)service.CountActivities() / Convert.ToDecimal(maxRows));
+            activityModels.PageCount = (int)Math.Ceiling(pageCount);
+            activityModels.CurrentPageIndex = currentPage;
+            return activityModels;
         }
     }
 }
