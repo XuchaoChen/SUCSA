@@ -13,7 +13,7 @@ namespace SUCSA.SERVICE
 
         public ICollection<Activity> GetAllActivities()
         {
-            return context.Activities.ToList();
+            return context.Activities.Include("Category").ToList();
         }
 
         public Activity GetActivityByName(string name)

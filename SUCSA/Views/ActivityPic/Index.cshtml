@@ -6,21 +6,29 @@
 @using SUCSA.DATA
 
 <link href="~/Content/photobox.css" rel="stylesheet" type="text/css" />
-
-<h2>Index</h2>
-
-<ul id='gallery'>
-    @foreach (var item in Model.activities)
+<div id="wrap">
+    @foreach (var list in Model.activities)
     {
-        var base64 = Convert.ToBase64String(item.Picture);
-        var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
-        <li class="loaded">
-            <a href=@imgSrc>
-                <img src=@imgSrc title="photo1 title">
-            </a>
-        </li>
+        <div>
+            <h2>@list.First().Category.CategoryName</h2>
+            <ul class='gallery'>
+                @foreach (var item in list)
+                {
+
+                    var base64 = Convert.ToBase64String(item.Picture);
+                    var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                    var base64_another = Convert.ToBase64String(item.Thumbnails);
+                    var thumbnail = string.Format("data:image/gif;base64,{0}", base64_another);
+                    <li class="loaded" style="list-style:none;display: inline;">
+                        <a href=@imgSrc>
+                            <img src=@thumbnail title=@item.Description>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
     }
-</ul>
+</div>
 
 <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="~/Scripts/jquery.photobox.js"></script>
@@ -36,7 +44,7 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 
-    $('#gallery').photobox('a', { thumbs: true, loop: false }, callback);
+    $('.gallery').photobox('a', { thumbs: true, loop: false }, callback);
     // using setTimeout to make sure all images were in the DOM, before the history.load() function is looking them up to match the url hash
     setTimeout(window._photobox.history.load, 2000);
     function callback() {
