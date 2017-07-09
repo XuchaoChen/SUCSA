@@ -17,7 +17,7 @@ namespace SUCSA.DATA
                     new Admin() {UserName="admin1",PassWord="admin1" },
                     new Admin() {UserName="admin2",PassWord="admin2" }
                 };
-                var activities = new List<Activity>
+                /*var activities = new List<Activity>
                 {
 
                     
@@ -30,7 +30,7 @@ namespace SUCSA.DATA
                 foreach(Activity a in activities)
                 {
                     ctx.Activities.Add(a); 
-                }
+                }*/
                 foreach(Admin a in admins)
                 {
                     ctx.Admins.Add(a);

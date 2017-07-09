@@ -176,6 +176,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivityViewModels.cs" />
+    <Compile Include="Models\HomePageViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SupplierViewModels.cs" />
@@ -203,6 +204,7 @@
     <Content Include="Content\default\bullets.png" />
     <Content Include="Content\default\default.css" />
     <Content Include="Content\default\loading.gif" />
+    <Content Include="Content\flip.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\light\arrows.png" />
     <Content Include="Content\light\bullets.png" />
@@ -238,6 +240,7 @@
     <Content Include="img\Activities\7.jpg" />
     <Content Include="img\Activities\8.jpg" />
     <Content Include="img\Activities\9.jpg" />
+    <Content Include="img\background.jpg" />
     <Content Include="img\bg1.jpg" />
     <Content Include="img\bg22.jpg" />
     <Content Include="img\icons\button-icons.png" />
@@ -257,8 +260,6 @@
     <Content Include="img\logo.jpg" />
     <Content Include="img\spinner.gif" />
     <Content Include="img\team\1.png" />
-    <Content Include="img\team\2.png" />
-    <Content Include="img\team\3.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.eot" />
@@ -291,12 +292,16 @@
     <Content Include="font-awesome\scss\_spinning.scss" />
     <Content Include="font-awesome\scss\_stacked.scss" />
     <Content Include="font-awesome\scss\_variables.scss" />
+    <None Include="Properties\PublishProfiles\SUCSA20170426050210 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-min-1.7.2.js" />
     <Content Include="Scripts\jquery.easing.min.js" />
+    <Content Include="Scripts\jquery.flip.min.js" />
+    <Content Include="Scripts\jquery.min.1.4.2.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.nivo.slider.js" />
     <Content Include="Scripts\jquery.scrollTo.js" />
@@ -307,6 +312,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\script.js" />
     <Content Include="Scripts\startmin.js" />
     <Content Include="Scripts\wow.min.js" />
     <Content Include="Scripts\_references.js" />

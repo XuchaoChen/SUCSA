@@ -1,4 +1,5 @@
 ﻿using SUCSA.DATA;
+using SUCSA.Models;
 using SUCSA.SERVICE;
 using System;
 using System.Collections;
@@ -14,11 +15,18 @@ namespace SUCSA.Controllers
         public ActionResult Index()
         {
             IList<Activity> activities = new List<Activity>();
-            using(var service=new ActivitiesService())
+            IList<Supplier> suppliers = new List<Supplier>();
+            using (var service=new ActivitiesService())
             {
-                activities = (IList<Activity>)service.GetAllTopActivities();
+                activities = service.GetAllTopActivities().ToList();
             }
-            return View(activities);
+            using (var service = new SupplierService())
+            {
+                suppliers = service.GetAllSuppliers().ToList();
+            }
+
+            HomePageViewModels models = new HomePageViewModels(activities, suppliers);
+            return View(models);
         }
 
         public ActionResult About()
