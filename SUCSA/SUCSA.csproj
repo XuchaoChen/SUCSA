@@ -168,12 +168,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActivityPicController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ActivityPicViewModels.cs" />
     <Compile Include="Models\ActivityViewModels.cs" />
     <Compile Include="Models\HomePageViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -210,6 +212,7 @@
     <Content Include="Content\light\light.css" />
     <Content Include="Content\light\loading.gif" />
     <Content Include="Content\nivo-slider.css" />
+    <Content Include="Content\photobox.css" />
     <Content Include="Content\startmin.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
@@ -239,6 +242,26 @@
     <Content Include="img\Activities\7.jpg" />
     <Content Include="img\Activities\8.jpg" />
     <Content Include="img\Activities\9.jpg" />
+    <Content Include="img\Activities\tn_1.jpg" />
+    <Content Include="img\Activities\tn_10.jpg" />
+    <Content Include="img\Activities\tn_11.jpg" />
+    <Content Include="img\Activities\tn_12.jpg" />
+    <Content Include="img\Activities\tn_13.jpg" />
+    <Content Include="img\Activities\tn_14.jpg" />
+    <Content Include="img\Activities\tn_15.jpg" />
+    <Content Include="img\Activities\tn_16.jpg" />
+    <Content Include="img\Activities\tn_17.jpg" />
+    <Content Include="img\Activities\tn_18.jpg" />
+    <Content Include="img\Activities\tn_19.jpg" />
+    <Content Include="img\Activities\tn_2.jpg" />
+    <Content Include="img\Activities\tn_20.jpg" />
+    <Content Include="img\Activities\tn_3.JPG" />
+    <Content Include="img\Activities\tn_4.jpg" />
+    <Content Include="img\Activities\tn_5.jpg" />
+    <Content Include="img\Activities\tn_6.jpg" />
+    <Content Include="img\Activities\tn_7.jpg" />
+    <Content Include="img\Activities\tn_8.jpg" />
+    <Content Include="img\Activities\tn_9.jpg" />
     <Content Include="img\background.jpg" />
     <Content Include="img\bg1.jpg" />
     <Content Include="img\bg22.jpg" />
@@ -305,6 +328,7 @@
     <Content Include="Scripts\jquery.min.1.4.2.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.nivo.slider.js" />
+    <Content Include="Scripts\jquery.photobox.js" />
     <Content Include="Scripts\jquery.scrollTo.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -348,6 +372,7 @@
     <Content Include="Views\Admin\Supplier.cshtml" />
     <Content Include="Views\Shared\_loginLayout.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\ActivityPic\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
