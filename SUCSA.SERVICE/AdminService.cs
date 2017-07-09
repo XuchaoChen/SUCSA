@@ -64,18 +64,22 @@ namespace SUCSA.SERVICE
             return context.Admins.Count();
         }
 
-        private string Encrypt(string password)
+        public string Encrypt(string password)
         {
-            var data = Encoding.Unicode.GetBytes(password);
-            byte[] encrypted = ProtectedData.Protect(data, null, DataProtectionScope.CurrentUser);
-            return Convert.ToBase64String(encrypted);
+            SHA512 sha512 = SHA512.Create();
+            byte[] bytes = Encoding.UTF8.GetBytes(password);
+            byte[] hash = sha512.ComputeHash(bytes);
+            return GetStringFromHash(hash);
         }
-        
-        public static string Decrypt(string password)
+
+        private string GetStringFromHash(byte[] hash)
         {
-            byte[] data = Convert.FromBase64String(password);
-            byte[] decrypted = ProtectedData.Unprotect(data, null, DataProtectionScope.CurrentUser);
-            return Encoding.Unicode.GetString(decrypted);
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                result.Append(hash[i].ToString("X2"));
+            }
+            return result.ToString();
         }
     }
 }
