@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SUCSA.DATA;
+using System.Security.Cryptography;
+using System.IdentityModel;
 
 namespace SUCSA.SERVICE
 {
@@ -20,6 +22,7 @@ namespace SUCSA.SERVICE
         {
             if (admin != null)
             {
+                admin.PassWord = Encrypt(admin.PassWord);
                 context.Admins.Add(admin);
                 context.SaveChanges();
                 return true;
@@ -32,7 +35,7 @@ namespace SUCSA.SERVICE
             var admin = context.Admins.Find(id);
             if (admin != null)
             {
-                admin.PassWord = password;
+                admin.PassWord =Encrypt(password);
                 context.SaveChanges();
                 return true;
             }
@@ -59,6 +62,20 @@ namespace SUCSA.SERVICE
         public int CountAdmins()
         {
             return context.Admins.Count();
+        }
+
+        private string Encrypt(string password)
+        {
+            var data = Encoding.Unicode.GetBytes(password);
+            byte[] encrypted = ProtectedData.Protect(data, null, DataProtectionScope.CurrentUser);
+            return Convert.ToBase64String(encrypted);
+        }
+        
+        public static string Decrypt(string password)
+        {
+            byte[] data = Convert.FromBase64String(password);
+            byte[] decrypted = ProtectedData.Unprotect(data, null, DataProtectionScope.CurrentUser);
+            return Encoding.Unicode.GetString(decrypted);
         }
     }
 }

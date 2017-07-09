@@ -58,7 +58,7 @@ namespace SUCSA.Controllers
             using(var service=new AdminService())
             {
                 var user = service.GetAdminByName(model.Username);
-                if (user == null||user.PassWord!=model.Password)
+                if (user == null||AdminService.Decrypt(user.PassWord)!=model.Password)
                 {
                     return false;
                 }
